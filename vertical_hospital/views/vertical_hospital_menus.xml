@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Parent Menu -->
+    <menuitem id="vertical_hospital_menu_root"
+        name="Hospital"
+        web_icon="vertical_hospital,static/description/vertical-hospital-icon.svg"
+        sequence="1">
+
+        <!-- Submenus -->
+        <menuitem id="vertical_hospital_menu_pacient"
+            name="Pacient"
+            sequence="1">
+
+            <menuitem id="menu_pacient"
+                action="vertical_hospital.action_patient_management"
+                sequence="10"/>
+
+        </menuitem>
+
+        <menuitem id="vertical_hospital_menu_treatment"
+            name="Treatment"
+            sequence="1">
+
+            <menuitem id="menu_treatment"
+                
+                sequence="10"/>
+
+  <!-- action="action_quotations_with_onboarding" -->
+        </menuitem>
+
+    </menuitem>
+</odoo>
