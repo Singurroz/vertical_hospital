@@ -23,14 +23,13 @@
     'depends': ['base','mail','utm'],
 
     # always loaded
-    'data': [
-        'security/ir.model.access.csv',
-        'data/ir_sequence_data.xml',
-        'views/paciente_view.xml',
-        
-        
-        #Menus
-        'views/vertical_hospital_menus.xml',
+    "data": [
+        "security/ir.model.access.csv",
+        "data/ir_sequence_data.xml",
+        "views/paciente_view.xml",
+        "views/treatment_management_view.xml",
+        "views/vertical_hospital_menus.xml",
+        "report/patient_management_report.xml",
     ],
     # only loaded in demonstration mode
     'demo': [

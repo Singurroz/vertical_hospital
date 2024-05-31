@@ -36,6 +36,8 @@ class PacientManagement(models.Model):
         default=lambda self: self.env.context.get('user_id', self.env.user.id),
         tracking=3
         )
+    treatment_line = fields.One2many(
+        'treatment.management.line', 'pacient_id', 'Treatment management line')
     
     
     _sql_constraints = [
@@ -56,8 +58,32 @@ class PacientManagement(models.Model):
                 vals['sequence'] = self.env['ir.sequence'].next_by_code(
                     'vertical.hospital', sequence_date=seq_date) or _("New")
             dni = vals['dni']
-            if dni.isdigit():#re.match(pattern, vals['dni']):
+            if dni.isdigit():
                 continue
             else:
                 raise ValidationError(_('Solo se puede agregar numeros.'))
         return super().create(vals_list)
+
+
+
+class TreatmentManagementLine(models.Model):
+    _name = 'treatment.management.line'
+    _description = 'treatment management line'
+    
+
+    pacient_id = fields.Many2one(
+        comodel_name='patient.management',
+        string="Pacient management",)
+    treatment_id = fields.Many2one(
+        comodel_name='treatment.management',
+        string="Treatment management",)
+    treatment_code = fields.Char(related='treatment_id.treatment_code')
+    treatment_name = fields.Char(related='treatment_id.treatment_name')
+    
+    
+    def name_get(self):
+        result = []
+        for tm_line in self.sudo():
+            name = tm_line.order_id.treatment_code
+            result.append((tm_line.id, name))
+        return result
