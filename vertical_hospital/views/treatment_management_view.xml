@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="treatment_management_tree_view">
+            <field name="name">Treatment Management</field>
+            <field name="model">treatment.management</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="treatment_code"/>
+                    <field name="treatment_name"/>
+                    <field name="treatment_doctor"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_treatment_management_form" model="ir.ui.view">
+            <field name="name">treatment.management.form</field>
+            <field name="model">treatment.management</field>
+            <field name="arch" type="xml">
+                <form string="Treatment Management">
+                    <sheet>
+                    <group>
+                        <group name="treatment_details">
+                            <field name="treatment_code"/>
+                        </group>
+                        <group name="treatment_details">
+                            <field name="treatment_name"/>
+                            <field name="treatment_doctor"/>
+                        </group>
+                    </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="action_treatment_management">
+            <field name="name">Treatment Management</field>
+            <field name="res_model">treatment.management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+    </data>
+</odoo>

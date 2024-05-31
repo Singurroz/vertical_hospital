@@ -23,10 +23,8 @@
             sequence="1">
 
             <menuitem id="menu_treatment"
-                
+                action="vertical_hospital.action_treatment_management"
                 sequence="10"/>
-
-  <!-- action="action_quotations_with_onboarding" -->
         </menuitem>
 
     </menuitem>
